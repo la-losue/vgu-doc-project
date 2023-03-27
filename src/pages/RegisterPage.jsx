@@ -1,13 +1,14 @@
+import { SignUp } from 'components/SignUp'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 const RegisterPage = () => {
   return (
     <div>
-      <h1>Register</h1>
-
+      <h1>Регистрация</h1>
+    <SignUp />
       <p>
-        Already have an account? <Link to="/login">Sign in</Link>
+        У вас уже есть аккаунт? <Link to="/login">Войти</Link>
       </p>
     </div>
   )

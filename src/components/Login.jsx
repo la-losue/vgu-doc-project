@@ -32,7 +32,7 @@ const Login = () => {
     
   return (
     <Form 
-    title='sign in'
+    title='Войти'
     handleClick={handleLogin}
     />
   )

@@ -28,7 +28,7 @@ import React from 'react'
     } 
   return (
     <Form 
-    title = "register"
+    title = "зарегистрироваться"
     handleClick = {handleRegister}
     />
   )

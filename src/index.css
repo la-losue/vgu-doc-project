@@ -19,13 +19,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.document-name{
-  display: flex;
-  justify-content: center;
+.section-name{
+  padding-top: 20px;
 }
+.educational-plan-list{
+  margin-bottom: 10px;
+}
+.work-programm-list{
+  margin-bottom: 10px;
+}
+.work-programm-form{
+  margin-bottom: 10px;
+}
+
+.link{
+  text-decoration: none;
+  color: white;
+
+}
+
 textarea{
   resize: none;
 }
 li{
   list-style-type: none;
+}
+h1{
+  margin-bottom: 25px;
+}
+
+h2{
+  margin-bottom: 10px;
 }

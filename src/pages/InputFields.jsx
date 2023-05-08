@@ -4,6 +4,7 @@ import { TextField } from "@mui/material";
 import "./modules.css/InputField.css";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { Link } from 'react-router-dom'
 // import Box from "@mui/material/Box";
 // import MenuItem from "@mui/material/MenuItem";
 
@@ -161,8 +162,11 @@ const DocumentForm = () => {
   //   setFormData((prevformData) => ({ ...prevformData, input2: "" }));
   // };
 
-  return (
-    <form className="document-form" onSubmit={handleSubmit}>
+  return ( 
+    <div>
+      <Link className="link" to="/electronics">Назад</Link>
+      <form className="document-form" onSubmit={handleSubmit}>
+      
       <ul>
 
         <li className="field-block">
@@ -1297,6 +1301,8 @@ const DocumentForm = () => {
         </Button>
       </Stack>
     </form>
+    </div>
+
   );
 };
 

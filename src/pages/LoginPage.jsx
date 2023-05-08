@@ -8,7 +8,7 @@ const LoginPage = () => {
         <h1>Войти</h1>
         <Login />
         <p>
-            Или <Link to="/register">Зарегестрироваться</Link>
+            Или <Link style={{color: "white", borderBottom: "1px solid white"}} to="/register">Зарегестрироваться</Link>
         </p>
     </div>
   )

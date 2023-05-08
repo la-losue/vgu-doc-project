@@ -4,15 +4,13 @@
   margin: 0 auto;
 }
 .field-block {
-  align-items: center;
-  display: flex;
   margin-bottom: 15px;
-  display: flex;
-  justify-content: space-between;
+  
 }
 .labelField {
   margin-right: 30px;
   font-size: 20px;
+  display: block;
 }
 .form-button {
   display: block !important;

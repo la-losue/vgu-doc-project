@@ -2,7 +2,8 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { openDB } from 'idb';
 // import { DocumentForm } from 'pages/InputFields'
 
 
@@ -33,13 +34,13 @@ const Equipment = () => {
       ...prevEquipment,
       [name]: value,
     }));
+
   };
 
   // обработчик отправки формы
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(equipment);
-
     // Очищаем поля после отправки
     setEquipment({
       
@@ -59,10 +60,11 @@ const Equipment = () => {
     });
     // здесь отправляем данные на сервер
   };
+  
 
-  // const handleAddInput = () => {
-  //   setFormData((prevformData) => ({ ...prevformData, input2: "" }));
-  // };
+  
+
+  
 
   return ( 
     <div>

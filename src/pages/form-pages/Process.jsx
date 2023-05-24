@@ -72,11 +72,26 @@ const Process = () => {
       
     });
     // здесь отправляем данные на сервер
+    fetch('http://localhost:8000', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(process)
+    })
+    .then(response => response.json())
+    // .then(data => {
+    //   // Обработка ответа от сервера
+    //   console.log(data);
+    // })
+    .catch(error => {
+      // Обработка ошибки
+      console.error(error);
+    });
+    
   };
 
-  // const handleAddInput = () => {
-  //   setFormData((prevformData) => ({ ...prevformData, input2: "" }));
-  // };
+
 
   return ( 
     <div>
@@ -473,23 +488,6 @@ const Process = () => {
 
 
       </ul>
-
-      {/* <div> */}
-        {/* <label htmlFor="course">Курс:</label>
-        <select
-          id="course"
-          name="course"
-          value={formData.course}
-          onChange={handleInputChange}
-        >
-          <option value="">Выберите курс</option>
-          {data.course.map((course) => (
-            <option key={course.id} value={course.name}>
-              {course.name}
-            </option>
-          ))}
-        </select>
-      </div> */}
 
       <Stack spacing={2} direction="row">
         <Button className="form-button" type="submit" variant="contained">

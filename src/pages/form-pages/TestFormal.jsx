@@ -1,141 +1,19 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import React from "react";
 
-const Formal = () => {
-  const [formal, setFormal] = useState({
-    // состояние компонента, содержащее данные из полей ввода и select
-    codeNameDirection: '',
-    specializationProfile: '',
-    studentQualification: '',
-    educationalForm: '',
-    department: '',
-    creatorProgramm: '',
-    recommended: '',
-    academicYear: '',
-  });
-
-  // получение данных из localStorage в стейт
-  useEffect(() => {
-    const localStorageData = JSON.parse(localStorage.getItem('formal'));
-    if (localStorageData) {
-      setFormal(localStorageData);
-    }
-  }, []);
-
-  // обработчик изменения поля ввода
+const TestFormal = ({ formData, setFormData, handleBlur }) => {
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormal((prevFormal) => ({
-      ...prevFormal,
-      [name]: value,
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
     }));
 
-    
-
-    // добавление данных в localStorage
-    // localStorage.setItem('formal', JSON.stringify({ ...formal, [name]: value }));
+    //Добавим данные в localStorage
+    localStorage.setItem('formData', JSON.stringify({ ...formData, [formData.name]: formData.value }));
   };
 
-  // обработчик отправки формы
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formal);
-    // Очищаем поля после отправки
-    setFormal({
-      codeNameDirection: '',
-      specializationProfile: '',
-      studentQualification: '',
-      educationalForm: '',
-      department: '',
-      creatorProgramm: '',
-      recommended: '',
-      academicYear: '',
-
-    });
-
- // здесь отправляем данные на сервер
-    fetch('http://localhost:8000', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formal)
-    })
-    .then(response => response.json())
-    // .then(data => {
-    //   // Обработка ответа от сервера
-    //   console.log(data);
-    // })
-    .catch(error => {
-      // Обработка ошибки
-      console.error(error);
-    });
-   
-  };
-
-  //   отправка данных из localStorage в indexedDb
-  const handleBlur = (event) => {
-    event.preventDefault();
-    const { name } = event.target;
-
-    // console.log(formal[name]);
-
-    if (formal[name]) {
-      const request = window.indexedDB.open('myDatabase', 1);
-      let db;
-
-      request.onerror = (event) => {
-        console.log('Error opening database');
-      };
-
-      request.onsuccess = (event) => {
-        db = event.target.result;
-        const transaction = db.transaction('myStore', 'readwrite');
-        const store = transaction.objectStore('myStore');
-
-        store.getAll().onsuccess = function (event) {
-          const currentFormalData = event.target.result;
-
-          const localStorageData = JSON.parse(localStorage.getItem('formal'));
-          console.log(currentFormalData)
-          if (!currentFormalData[name]) {
-
-            const formalData =  formal;
-
-            const request = store.add(formalData);
-
-            request.onerror = (event) => {
-              console.log('Error adding data to database');
-            };
-
-            request.onsuccess = (event) => {
-              console.log('Data added to database');
-            };
-          }
-        };
-      };
-
-      request.onupgradeneeded = (event) => {
-        db = event.target.result;
-        const objectStore = db.createObjectStore('myStore', {
-          keyPath: 'id',
-          autoIncrement: true,
-        });
-      };
-    }
-  };
-
-
-  
   return (
-    <div>
-      <Link className="link" to="/electronics">
-        Назад
-      </Link>
-      <form className="document-form" onSubmit={handleSubmit}>
+    <>
+    <fieldset>
         <ul>
           <li className="field-block">
             <label className="labelField" htmlFor="codeNameDirection">
@@ -147,7 +25,7 @@ const Formal = () => {
               id="codeNameDirection"
               name="codeNameDirection"
               autoComplete="off"
-              value={formal.codeNameDirection}
+              value={formData.codeNameDirection}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -164,7 +42,7 @@ const Formal = () => {
               id="specializationProfile"
               name="specializationProfile"
               autoComplete="off"
-              value={formal.specializationProfile}
+              value={formData.specializationProfile}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -181,7 +59,7 @@ const Formal = () => {
               id="studentQualification"
               name="studentQualification"
               autoComplete="off"
-              value={formal.studentQualification}
+              value={formData.studentQualification}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -198,7 +76,7 @@ const Formal = () => {
               id="educationalForm"
               name="educationalForm"
               autoComplete="off"
-              value={formal.educationalForm}
+              value={formData.educationalForm}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -215,7 +93,7 @@ const Formal = () => {
               id="department"
               name="department"
               autoComplete="off"
-              value={formal.department}
+              value={formData.department}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -232,7 +110,7 @@ const Formal = () => {
               id="creatorProgramm"
               name="creatorProgramm"
               autoComplete="off"
-              value={formal.creatorProgramm}
+              value={formData.creatorProgramm}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -249,7 +127,7 @@ const Formal = () => {
               id="recommended"
               name="recommended"
               autoComplete="off"
-              value={formal.recommended}
+              value={formData.recommended}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -266,7 +144,7 @@ const Formal = () => {
               id="academicYear"
               name="academicYear"
               autoComplete="off"
-              value={formal.academicYear}
+              value={formData.academicYear}
               onChange={handleInputChange}
               onBlur={handleBlur}
             />
@@ -274,16 +152,11 @@ const Formal = () => {
 
           {/* 9 */}
         </ul>
+    </fieldset>
+    </>
+  )
 
-
-        <Stack spacing={2} direction="row">
-          <Button className="form-button" type="submit" variant="contained">
-            Создать документ
-          </Button>
-        </Stack>
-      </form>
-    </div>
-  );
+  
 };
 
-export { Formal }
+export { TestFormal };

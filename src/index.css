@@ -61,3 +61,22 @@ input {
     padding: 3px;
     font-size: 20px;
 }
+
+
+.btn-programm-work{
+  background: none;
+  font-size: 20px;
+  color: white;
+  border-bottom: 1px solid white;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.btn-programm-work:hover{
+  padding: 2px;
+  border: 1px solid transparent;
+  color: aliceblue;
+}
+.btn-programm-work{
+  transition: padding  0.1s;
+}
+

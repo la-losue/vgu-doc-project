@@ -14,7 +14,7 @@ import { posrRequest } from 'api'
     //Функция, при вызове которой учетные данные из формы отправятся на сервер
     //И мы получим уведомление о регистрации
     const handleRegister = async (email, password) => {
-      // const register = await posrRequest({email, password}, "http://localhost:8000");
+      const register = await posrRequest({email, password}, "http://localhost:8000");
       navigate('/login')
     }
 

@@ -1,17 +1,26 @@
+// import { useAuth } from "hooks/useAuth";
+// import { useDispatch } from "react-redux";
+// import { removeUser } from "./store/slices/userSlice";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "hooks/useAuth";
-import { useDispatch } from "react-redux";
-import { removeUser } from "./store/slices/userSlice";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { DocumentForm } from "../pages/InputFields";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import { tokenContext } from "context/tokenContext";
 
 const HomePage = () => {
-  const dispatch = useDispatch();
-  const { isAuth, email } = useAuth();
+  // const dispatch = useDispatch();
+  // const { isAuth, email } = useAuth();
 
+  const {token, setToken} = useContext(tokenContext);
+
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem('token'));
+    setToken(token)
+  }, [token])
+
+  const isAuth = false;
   return isAuth ? (
     <div>
       
@@ -42,7 +51,7 @@ const HomePage = () => {
       <Stack spacing={2} direction="row">
         <Button
           className="buttonRemoveUser"
-          onClick={() => dispatch(removeUser())}
+          onClick={() => console.log(1)}
           variant="contained"
         >
           {" "}

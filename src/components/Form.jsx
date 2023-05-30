@@ -6,6 +6,10 @@ import React from "react";
 const Form = ({ title, handleClick }) => {
   const [email, setEmail] = useState(""); // переменные состояния
   const [pass, setPass] = useState("");
+
+  
+  
+  
   return (
     <div style={{display: 'flex', alignItems: 'center'}}>
       <input

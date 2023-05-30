@@ -5,17 +5,17 @@ import {BrowserRouter} from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { store } from 'pages/store'; // ?
 import App from './App';
-import "./firebase"
-// import reportWebVitals from './reportWebVitals';
+import "./firebase";
+
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <Provider store={store}>
+    <BrowserRouter>   
     <App />
-    </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

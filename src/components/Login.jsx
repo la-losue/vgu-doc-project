@@ -13,17 +13,16 @@ const Login = () => {
   const navigate = useNavigate();
   const { setToken } = useContext(tokenContext);
 
-  const handleLogin = async ({ email, password }) => {
+
+  const handleLogin = async (email, password) => {
+    console.log({ email, password })
     // функция, при вызове которой учетные данные из формы отправятся на сервер и мы получим токен
-    const token = await posrRequest({ email, password }, "http://localhost:8000");
+    const token = await posrRequest(`grant_type=&username=${email}&password=${password}&scope=&client_id=&client_secret=`, "application/x-www-form-urlencoded", "http://localhost:8000/auth/login");
 
     // // сохраняем токен в стейт контекст и localstorage
     setToken(token);
-    localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("access_token", JSON.stringify(token));
 
-   
-    navigate("/");
-    
   };
   
   // нам нужно получить здесь пользователя

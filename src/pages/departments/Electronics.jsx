@@ -10,65 +10,81 @@ import { TestEquipment } from "pages/form-pages/TestEquipment";
 
 const Electronics = () => {
   const [formData, setFormData] = useState({
-    codeNameDirection: "",
-    specializationProfile: "",
-    studentQualification: "",
-    educationalForm: "",
-    educationalForm: "",
-    department: "",
-    creatorProgramm: "",
-    recommended: "",
-    academicYear: "",
-    disciplineTask: "",
-    positinInPLO: "",
-    codeResultLearning: "",
-    competenceName: "",
-    codesResultLearning: "",
-    indicatorsResultLearning: "",
-    ResultLearning: "",
-    disciplineScope: "",
-    certificationForm: "",
-    classroomСlassesLectures3rdSemester: "",
-    classroomСlassesPractice3rdSemester: "",
-    independentWork3semester: "",
-    intermediateFormCertification3: "",
-    classroomСlassesLectures4rdSemester: "",
-    classroomСlassesPractice4rdSemester: "",
-    independentWork4semester: "",
-    intermediateFormCertification4: "",
-    disciplineContentPP: "",
-    disciplineContentName: "",
-    chapterDisciplineContent: "",
-    disciplinesClassesPP: "",
-    disciplinesClassesName: "",
-    disciplinesClassesLecture: "",
-    disciplinesClassesPractice: "",
-    disciplinesClassesIndepWork: "",
-    disciplinesClassesLab: "",
-    methodic: "",
-    basicLiteraturePP: "",
-    basicLiteratureSource: "",
-    additionalLiteraturePP: "",
-    additionalLiteratureSource: "",
-    onlineLiteratureNumber: "",
-    onlineLiteratureSource: "",
-    manualIndependedWorkNumber: "",
-    manualIndependedWorkSource: "",
-    referencesTechnologies: "",
-    disciplineTechnique: "",
-    disciplineTechniqueClassroom: "",
-    evaluationFund: "",
-    competenceCode: "",
-    plannedLearning: "",
-    formationStagesDiscipline: "",
-    FosAssessment: "",
-    evaluationCriteria: "",
-    competenceLevel: "",
-    ratingScale: "",
-    questionsList: "",
-    questionsListPractice: "",
-    additionalMaterials: "",
-  });
+    strData: {
+      codeNameDirection: "",
+      specializationProfile: "",
+      studentQualification: "",
+      educationalForm: "",
+      department: "",
+      creatorProgramm: "",
+      recommended: "",
+      academicYear: "",
+      semester: "",
+      disciplineTask: "",
+      positinInPLO: "",
+      disciplineScope: "",
+      certificationForm: "",
+      methodic: "",
+      referencesTechnologies: "",
+      additionalMaterials: "",
+    },
+    table_1: {
+        codeResultLearning:"",
+        competenceName: "",
+        codesResultLearning: "",
+        indicatorsResultLearning: "",
+        ResultLearning: "",
+    },
+    table_2: 
+      {
+        type_ed_work:"",
+        sub_type: "",
+        first_part: "",
+        second_part: "",
+      },
+    
+    table_3: {
+        section_type: "",
+        section: "",
+        content_section: "",
+      },
+      
+    table_4: {
+        section: "",
+        lectures: "",
+        practical: "",
+        laboratory: "",
+        independent: "",
+      },
+    table_5: {
+        type: "",
+        content: "",
+      },
+    table_6: {
+        content: "",
+      },
+    table_7: {
+        auditorium:"",
+        equipment: "",
+        quantity: "",
+
+      },
+    table_8: {
+        key_section: "",
+        result: "",
+        stages: "",
+        assessment_tools: "",
+      },
+    table_9: {
+        criteria: "",
+        level: "",
+        score: "",
+      },
+    table_10:
+      {},
+    });
+
+
 
   const [showFormal, setShowFormal] = useState(false);
   const [showOutcomes, setShowOutcomes] = useState(false);
@@ -104,69 +120,9 @@ const Electronics = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(formData);
-    //Очищаем поля после отправки
-    setFormData({
-      codeNameDirection: "",
-      specializationProfile: "",
-      studentQualification: "",
-      educationalForm: "",
-      department: "",
-      creatorProgramm: "",
-      recommended: "",
-      academicYear: "",
-      disciplineTask: "",
-      positinInPLO: "",
-      codeResultLearning: "",
-      competenceName: "",
-      codesResultLearning: "",
-      indicatorsResultLearning: "",
-      ResultLearning: "",
-      disciplineScope: "",
-      certificationForm: "",
-      classroomСlassesLectures3rdSemester: "",
-      classroomСlassesPractice3rdSemester: "",
-      independentWork3semester: "",
-      intermediateFormCertification3: "",
-      classroomСlassesLectures4rdSemester: "",
-      classroomСlassesPractice4rdSemester: "",
-      independentWork4semester: "",
-      intermediateFormCertification4: "",
-      disciplineContentPP: "",
-      disciplineContentName: "",
-      chapterDisciplineContent: "",
-      disciplinesClassesPP: "",
-      disciplinesClassesName: "",
-      disciplinesClassesLecture: "",
-      disciplinesClassesPractice: "",
-      disciplinesClassesIndepWork: "",
-      disciplinesClassesLab: "",
-      methodic: "",
-      basicLiteraturePP: "",
-      basicLiteratureSource: "",
-      additionalLiteraturePP: "",
-      additionalLiteratureSource: "",
-      onlineLiteratureNumber: "",
-      onlineLiteratureSource: "",
-      manualIndependedWork: "",
-      manualIndependedWorkNumber: "",
-      referencesTechnologies: "",
-      disciplineTechnique: "",
-      disciplineTechniqueClassroom: "",
-      evaluationFund: "",
-      competenceCode: "",
-      plannedLearning: "",
-      formationStagesDiscipline: "",
-      FosAssessment: "",
-      evaluationCriteria: "",
-      competenceLevel: "",
-      ratingScale: "",
-      questionsList: "",
-      questionsListPractice: "",
-      additionalMaterials: "",
-    });
-
+    
     //Отправляем данные на сервер
-    fetch("http://localhost:8000", {
+    fetch("http://localhost:8000/operations/add", {
       method: "Post",
       headers: {
         "Content-Type": "application/json",
@@ -312,46 +268,6 @@ const Electronics = () => {
         </Button>
       </Stack> 
       </form>
-
-      {/* <h1>Кафедра электроники</h1>
-      <ul>
-        <li className="work-programm-form">
-          <Link className="link" to="/formal">
-            Формальная информация (Formal) (c 1 по 8)
-          </Link>
-        </li>
-
-        <li className="work-programm-form">
-          <Link className="link" to="/outcomes">
-            Результаты обучения (Outcomes) (с 9 по 11)
-          </Link>
-        </li>
-
-        <li className="work-programm-form">
-          <Link className="link" to="/process">
-            Процесс - Дисциплины (Process) (c 12- 14)
-          </Link>
-        </li>
-
-        <li className="work-programm-form">
-          <Link className="link" to="/references">
-            Рекомендаци - Литература (References) (15-18)
-          </Link>
-        </li>
-
-        <li className="work-programm-form">
-          <Link className="link" to="/equipment">
-            Материально-техническое обеспечение дисциплины (Equipment) (c 18 и
-            до конца)
-          </Link>
-        </li>
-      </ul>
-
-      <Stack spacing={2} direction="row">
-        <Button type="submit" variant="contained" >
-          Создать программу
-        </Button>
-      </Stack> */}
     </>
   );
 };

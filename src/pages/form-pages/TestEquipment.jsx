@@ -4,13 +4,20 @@ import Button from "@mui/material/Button";
 
 const TestEquipment = ({ formData, setFormData, handleBlur }) => {
   const handleInputChange = (event) => {
+    const nameEvent = event.target.name;
+    const pathEvent = event.target.id;
+    const valueEvent = event.target.value;
+
     setFormData((prev) => ({
       ...prev,
-      [event.target.name]: event.target.value,
+      [pathEvent]: {
+        ...prev[pathEvent],
+        [nameEvent]: valueEvent
+      }
     }));
 
     //Добавим данные в localStorage
-    localStorage.setItem("formData", JSON.stringify({ ...formData, [formData.name]: formData.value }));
+    localStorage.setItem('formData', JSON.stringify({ ...formData, [formData.name]: formData.value }));
   };
 
   

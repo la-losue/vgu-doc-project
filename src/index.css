@@ -80,3 +80,16 @@ input {
   transition: padding  0.1s;
 }
 
+.modal {
+  width: 26vw;
+  min-width: 300px;
+  min-height: 400px;
+  height: 43vh;
+  /* width: 500px;
+  height: 450px; */
+  position: absolute;
+  z-Index: 20;
+  margin-top: 28vh;
+  margin-left: 37vw;
+
+}

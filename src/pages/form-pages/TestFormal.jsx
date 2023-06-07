@@ -2,9 +2,16 @@ import React from "react";
 
 const TestFormal = ({ formData, setFormData, handleBlur }) => {
   const handleInputChange = (event) => {
+    const nameEvent = event.target.name;
+    const pathEvent = event.target.id;
+    const valueEvent = event.target.value;
+
     setFormData((prev) => ({
       ...prev,
-      [event.target.name]: event.target.value,
+      [pathEvent]: {
+        ...prev[pathEvent],
+        [nameEvent]: valueEvent
+      }
     }));
 
     //Добавим данные в localStorage

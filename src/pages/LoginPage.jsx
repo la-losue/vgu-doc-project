@@ -1,17 +1,15 @@
 import { Login } from 'components/Login'
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 const LoginPage = () => {
   return (
-    <div>
-        <h1>Войти</h1>
-        <Login />
-        <p>
-            Или <Link style={{color: "white", borderBottom: "1px solid white"}} to="/register">Зарегестрироваться</Link>
-        </p>
+    <div className="modal modal-content modal-sheet p-4 py-md-5">
+      <h1>Войти</h1>
+      <Login />
     </div>
+
   )
 }
 
-export {LoginPage}
+export { LoginPage }
